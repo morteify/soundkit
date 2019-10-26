@@ -1,0 +1,18 @@
+@import "../src/components/components";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#instruments-section {
+  background: green;
+  width: 100vw;
+  height: 60vh;
+}
+
+#timeline-section {
+  background: coral;
+  width: 100vw;
+  height: 40vh;
+}

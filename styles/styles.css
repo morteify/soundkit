@@ -1,0 +1,23 @@
+.instruments-section__example-button-element {
+  width: 5rem;
+  height: 5rem;
+  background: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#instruments-section {
+  background: green;
+  width: 100vw;
+  height: 60vh;
+}
+
+#timeline-section {
+  background: coral;
+  width: 100vw;
+  height: 40vh;
+}
+/*# sourceMappingURL=styles.css.map */
