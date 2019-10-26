@@ -1,5 +1,34 @@
-.instruments-section__example-button-element {
+@mixin displayFlex($direction) {
+  display: flex;
+  direction: $direction;
+}
+
+%default-button {
   width: 5rem;
   height: 5rem;
+}
+
+.instruments-section {
   background: black;
+  @include displayFlex(row);
+
+  &__drums {
+    @include displayFlex(row);
+    &__hihat {
+      @extend %default-button;
+      background: aqua;
+    }
+    &__clap {
+      @extend %default-button;
+      background: red;
+    }
+    &__snare {
+      @extend %default-button;
+      background: yellow;
+    }
+    &__kickdrum {
+      @extend %default-button;
+      background: blue;
+    }
+  }
 }
