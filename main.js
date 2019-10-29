@@ -1,61 +1,6 @@
 import { instrumentButton } from "./src/instrumentButton.js";
-import { Clap, OpenHiHat, ClosedHiHat, Snare, Kick, Shaker, Ride, Cymbal } from "./src/drums.js"
+import { drums } from "./src/drums.js"
 
-const drums = [
-    {
-        name: 'OpenHiHat',
-        sound: OpenHiHat,
-        key: 'A',
-        cssClassName: 'instruments-section__drums__openhihat',
-
-    },
-    {
-        name: 'ClosedHiHat',
-        sound: ClosedHiHat,
-        key: 'S',
-        cssClassName: 'instruments-section__drums__closedhihat',
-
-    },
-    {
-        name: 'Ride',
-        sound: Ride,
-        key: 'D',
-        cssClassName: 'instruments-section__drums__ride',
-    },
-    {
-        name: 'Cymbal',
-        sound: Cymbal,
-        key: 'F',
-        cssClassName: 'instruments-section__drums__cymbal',
-    },
-    {
-        name: 'Snare',
-        sound: Snare,
-        key: 'G',
-        cssClassName: 'instruments-section__drums__snare',
-
-    },
-    {
-        name: 'Kick',
-        sound: Kick,
-        key: 'H',
-        cssClassName: 'instruments-section__drums__kick',
-    },
-    {
-        name: 'Clap',
-        sound: Clap,
-        key: 'J',
-        cssClassName: 'instruments-section__drums__clap',
-
-    },
-    {
-        name: 'Shaker',
-        sound: Shaker,
-        key: 'K',
-        cssClassName: 'instruments-section__drums__shaker',
-    },
-
-]
 
 const instrumentsSection = document.querySelector('#instruments-section')
 const timelineSection = document.querySelector('#timeline-section')
@@ -91,6 +36,8 @@ export function playSavedSounds() {
     audioElem.load();
     setTimeout(() => {
         audioElem.play();
+        // timelineSection.innerHTML += ".".repeat(Math.floor(playbackSound.currentTime / 100))
+        // timelineSection.innerHTML += "dupa"
         playSavedSounds(state)
     }, playbackSound.currentTime)
 }
@@ -100,25 +47,32 @@ drumsSection.classList.add('instruments-section__drums')
 drumsButtons.forEach(drumButton => drumsSection.appendChild(drumButton))
 instrumentsSection.appendChild(drumsSection)
 
-const recordButton = document.createElement('button')
-recordButton.innerHTML = "CLICK TO RECORD"
-recordButton.addEventListener('click', event => {
+
+const controlPanel = document.createElement('div')
+controlPanel.classList.add('timeline-section__control-panel')
+timelineSection.appendChild(controlPanel)
+
+const recordIcon = document.createElement('img')
+recordIcon.src = "./assets/Icons/microphone.png"
+recordIcon.classList.add('timeline-section__control-panel__record')
+recordIcon.addEventListener('click', event => {
     state.isRecording = !state.isRecording
     if (state.isRecording)
-        recordButton.innerHTML = "NOW RECORDING"
+        recordIcon.classList = 'timeline-section__control-panel__record--active'
     if (!state.isRecording)
-        recordButton.innerHTML = "CLICK TO RECORD"
+        recordIcon.classList = 'timeline-section__control-panel__record'
     state.lastInterval = Date.now()
 })
-timelineSection.appendChild(recordButton)
+controlPanel.appendChild(recordIcon)
 
-const playButton = document.createElement('button')
-playButton.innerHTML = "PLAY"
-playButton.addEventListener('click', event => {
+const playIcon = document.createElement('img')
+playIcon.src = "./assets/Icons/play-button.png"
+playIcon.classList.add('timeline-section__control-panel__play')
+playIcon.addEventListener('click', event => {
     state.isRecording = false
     playSavedSounds(state)
 })
-timelineSection.appendChild(playButton)
+controlPanel.appendChild(playIcon)
 
 
 

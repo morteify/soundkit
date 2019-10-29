@@ -15,7 +15,7 @@ body {
 }
 
 #timeline-section {
-  background: coral;
+  background: #d3d1d1;
   width: 100vw;
   height: 40vh;
 }
@@ -25,6 +25,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+%active-button {
+  @extend %default-button;
+  transform: scale(1.1);
+  transition: all 0.1s;
 }
 
 .instruments-section {
@@ -36,34 +46,99 @@ body {
     &__openhihat {
       @extend %default-button;
       background: #f7567c6c;
+      &--active {
+        @extend %active-button;
+        background: #f7567c6c;
+      }
     }
     &__closedhihat {
       @extend %default-button;
       background: #f7567c81;
+      &--active {
+        @extend %active-button;
+        background: #f7567c81;
+      }
     }
     &__ride {
       @extend %default-button;
       background: #f7567ca1;
+      &--active {
+        @extend %active-button;
+        background: #f7567ca1;
+      }
     }
     &__cymbal {
       @extend %default-button;
       background: #f7567c94;
+      &--active {
+        @extend %active-button;
+        background: #f7567c94;
+      }
     }
     &__snare {
       @extend %default-button;
       background: #f7567ca6;
+      &--active {
+        @extend %active-button;
+        background: #f7567ca6;
+      }
     }
     &__kick {
       @extend %default-button;
       background: #f7567ca8;
+      &--active {
+        @extend %active-button;
+        background: #f7567ca8;
+      }
     }
     &__clap {
       @extend %default-button;
       background: #f7567cd5;
+      &--active {
+        @extend %active-button;
+        background: #f7567cd5;
+      }
     }
     &__shaker {
       @extend %default-button;
       background: #f7567c;
+      &--active {
+        @extend %active-button;
+        background: #f7567c;
+      }
+    }
+  }
+}
+
+%control-icon {
+  height: 3rem;
+  height: 3rem;
+  padding-left: 0.5rem;
+  &:hover {
+    cursor: pointer;
+    filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%)
+      contrast(6%);
+  }
+}
+
+.timeline-section {
+  &__control-panel {
+    box-shadow: 10px -0px 5px rgba(0, 0, 0, 0.068);
+    height: 70px;
+    background: #fff;
+    @include displayFlex(row);
+    justify-content: flex-start;
+    align-items: center;
+    &__record {
+      @extend %control-icon;
+      &--active {
+        @extend %control-icon;
+        filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg)
+          brightness(95%) contrast(80%);
+      }
+    }
+    &__play {
+      @extend %control-icon;
     }
   }
 }

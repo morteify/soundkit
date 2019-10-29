@@ -30,10 +30,30 @@ export function instrumentButton(title, sound, key, cssClassName = '', state, up
         audioElem.play()
         state.lastInterval = Date.now()
     }
-    div.addEventListener('click', event => playSound(sound, updateSavedSounds))
+
+    const toggleActive = () => {
+        div.classList.toggleList(`${cssClassName}--title`)
+    }
+
+    div.addEventListener('mousedown', event => {
+        div.className = `${cssClassName}--active`
+        playSound(sound, updateSavedSounds)
+    })
+
+    div.addEventListener('mouseup', event => {
+        div.className = `${cssClassName}`
+    })
+
     document.body.addEventListener('keydown', event => {
         if (event.keyCode === key.charCodeAt(0)) {
             playSound(sound, updateSavedSounds)
+            div.className = `${cssClassName}--active`
+        }
+    })
+
+    document.body.addEventListener('keyup', event => {
+        if (event.keyCode === key.charCodeAt(0)) {
+            div.className = `${cssClassName}`
         }
     })
 
