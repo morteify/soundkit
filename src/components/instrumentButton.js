@@ -12,26 +12,23 @@ export function instrumentButton(title, sound, key, cssClassName = '', updateSav
     keyElem.classList.add(`${cssClassName}__key`)
     div.appendChild(keyElem)
 
-    const playSound = soundElem => {
-        const startTime = Date.now() / 1000
-        const audio = soundElem.cloneNode()
-        audio.addEventListener('loadedmetadata', event => {
-            const duration = (Date.now() / 1000) - startTime
-            updateSavedSounds({ key, audio, name: title, duration })
-        })
-        audio.load()
-        audio.play()
-        audio.remove()
+    const playSound = (updateSavedSounds) => {
+        const soundSource = document.querySelector(`#${cssClassName}`)
+        soundSource.pause()
+        soundSource.currentTime = 0
+        soundSource.play()
+        updateSavedSounds({ key, audio: sound, name: title, timestamp: Date.now() })
+
     }
 
     div.addEventListener('click', event => playSound(sound))
     document.body.addEventListener('keydown', event => {
         if (event.keyCode === key.charCodeAt(0)) {
-            playSound(sound)
+            playSound(sound, updateSavedSounds)
         }
     })
 
-
-
     return div
 }
+
+
