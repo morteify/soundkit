@@ -1,0 +1,8 @@
+export const Clap = new Audio('../../../assets/Drums/clap.WAV')
+export const OpenHiHat = new Audio('../../../assets/Drums/openhihat.WAV')
+export const ClosedHiHat = new Audio('../../../assets/Drums/closedhihat.WAV')
+export const Snare = new Audio('../../../assets/Drums/snare.WAV')
+export const Kick = new Audio('../../../assets/Drums/kick.WAV')
+export const Shaker = new Audio('../../../assets/Drums/shaker.WAV')
+export const Ride = new Audio('../../../assets/Drums/ride.WAV')
+export const Cymbal = new Audio('../../../assets/Drums/cymbal.WAV')

@@ -1,4 +1,7 @@
-@import "../src/components/components";
+@mixin displayFlex($direction) {
+  display: flex;
+  direction: $direction;
+}
 
 body {
   margin: 0;
@@ -6,7 +9,7 @@ body {
 }
 
 #instruments-section {
-  background: green;
+  background: #fcfcfc;
   width: 100vw;
   height: 60vh;
 }
@@ -15,4 +18,52 @@ body {
   background: coral;
   width: 100vw;
   height: 40vh;
+}
+
+%default-button {
+  height: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instruments-section {
+  &__drums {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+    &__openhihat {
+      @extend %default-button;
+      background: #f7567c6c;
+    }
+    &__closedhihat {
+      @extend %default-button;
+      background: #f7567c81;
+    }
+    &__ride {
+      @extend %default-button;
+      background: #f7567ca1;
+    }
+    &__cymbal {
+      @extend %default-button;
+      background: #f7567c94;
+    }
+    &__snare {
+      @extend %default-button;
+      background: #f7567ca6;
+    }
+    &__kick {
+      @extend %default-button;
+      background: #f7567ca8;
+    }
+    &__clap {
+      @extend %default-button;
+      background: #f7567cd5;
+    }
+    &__shaker {
+      @extend %default-button;
+      background: #f7567c;
+    }
+  }
 }

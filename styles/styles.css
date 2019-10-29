@@ -1,62 +1,10 @@
-.instruments-section__drums__openhihat, .instruments-section__drums__clap, .instruments-section__drums__snare, .instruments-section__drums__kick, .instruments-section__drums__shaker, .instruments-section__drums__closedhihat, .instruments-section__drums__cymbal, .instruments-section__drums__ride {
-  width: 5rem;
-  height: 5rem;
-}
-
-.instruments-section {
-  background: black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  direction: row;
-}
-
-.instruments-section__drums {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  direction: row;
-}
-
-.instruments-section__drums__openhihat {
-  background: aqua;
-}
-
-.instruments-section__drums__clap {
-  background: red;
-}
-
-.instruments-section__drums__snare {
-  background: yellow;
-}
-
-.instruments-section__drums__kick {
-  background: blue;
-}
-
-.instruments-section__drums__shaker {
-  background: grey;
-}
-
-.instruments-section__drums__closedhihat {
-  background: violet;
-}
-
-.instruments-section__drums__cymbal {
-  background: salmon;
-}
-
-.instruments-section__drums__ride {
-  background: mediumpurple;
-}
-
 body {
   margin: 0;
   padding: 0;
 }
 
 #instruments-section {
-  background: green;
+  background: #fcfcfc;
   width: 100vw;
   height: 60vh;
 }
@@ -65,5 +13,59 @@ body {
   background: coral;
   width: 100vw;
   height: 40vh;
+}
+
+.instruments-section__drums__openhihat, .instruments-section__drums__closedhihat, .instruments-section__drums__ride, .instruments-section__drums__cymbal, .instruments-section__drums__snare, .instruments-section__drums__kick, .instruments-section__drums__clap, .instruments-section__drums__shaker {
+  height: 10vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.instruments-section__drums {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.instruments-section__drums__openhihat {
+  background: #f7567c6c;
+}
+
+.instruments-section__drums__closedhihat {
+  background: #f7567c81;
+}
+
+.instruments-section__drums__ride {
+  background: #f7567ca1;
+}
+
+.instruments-section__drums__cymbal {
+  background: #f7567c94;
+}
+
+.instruments-section__drums__snare {
+  background: #f7567ca6;
+}
+
+.instruments-section__drums__kick {
+  background: #f7567ca8;
+}
+
+.instruments-section__drums__clap {
+  background: #f7567cd5;
+}
+
+.instruments-section__drums__shaker {
+  background: #f7567c;
 }
 /*# sourceMappingURL=styles.css.map */
