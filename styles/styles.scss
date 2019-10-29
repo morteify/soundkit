@@ -11,13 +11,13 @@ body {
 #instruments-section {
   background: #fcfcfc;
   width: 100vw;
-  height: 60vh;
+  height: 85vh;
 }
 
 #timeline-section {
   background: #d3d1d1;
   width: 100vw;
-  height: 40vh;
+  height: 15vh;
 }
 
 %default-button {
@@ -26,6 +26,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: "Montserrat";
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.63);
   &:hover {
     cursor: pointer;
   }

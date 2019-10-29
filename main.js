@@ -11,43 +11,6 @@ const state = {
     savedSounds: []
 }
 
-function updateSavedSounds(obj) {
-    const sound = {
-        key: obj.key, audio: obj.audio, name: obj.name, currentTime: obj.currentTime,
-    }
-    state.savedSounds = [...state.savedSounds, sound]
-    console.log(state.savedSounds)
-}
-
-const drumsButtons = Object.values(drums).map(obj => {
-    return instrumentButton(obj.name, obj.sound, obj.key, obj.cssClassName, state, updateSavedSounds)
-})
-
-let i = -1
-export function playSavedSounds() {
-    i++
-    if (i == state.savedSounds.length) {
-        i = -1;
-        return;
-    };
-    const playbackSound = state.savedSounds[i]
-    console.log(playbackSound.currentTime)
-    const audioElem = playbackSound.audio.cloneNode()
-    audioElem.load();
-    setTimeout(() => {
-        audioElem.play();
-        // timelineSection.innerHTML += ".".repeat(Math.floor(playbackSound.currentTime / 100))
-        // timelineSection.innerHTML += "dupa"
-        playSavedSounds(state)
-    }, playbackSound.currentTime)
-}
-
-const drumsSection = document.createElement('div')
-drumsSection.classList.add('instruments-section__drums')
-drumsButtons.forEach(drumButton => drumsSection.appendChild(drumButton))
-instrumentsSection.appendChild(drumsSection)
-
-
 const controlPanel = document.createElement('div')
 controlPanel.classList.add('timeline-section__control-panel')
 timelineSection.appendChild(controlPanel)
@@ -74,6 +37,42 @@ playIcon.addEventListener('click', event => {
 })
 controlPanel.appendChild(playIcon)
 
+const savedSoundsSection = document.createElement('div')
+savedSoundsSection.style = "width: 100%; display: flex"
+timelineSection.appendChild(savedSoundsSection)
 
 
+function updateSavedSounds(obj) {
+    const sound = {
+        key: obj.key, audio: obj.audio, name: obj.name, currentTime: obj.currentTime,
+    }
+    state.savedSounds = [...state.savedSounds, sound]
+    console.log(state.savedSounds)
+}
 
+const drumsButtons = Object.values(drums).map(obj => {
+    return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
+})
+
+const drumsSection = document.createElement('div')
+drumsSection.classList.add('instruments-section__drums')
+drumsButtons.forEach(drumButton => drumsSection.appendChild(drumButton))
+instrumentsSection.appendChild(drumsSection)
+
+let i = -1
+export function playSavedSounds() {
+    i++
+    if (i == state.savedSounds.length) {
+        i = -1;
+        return;
+    };
+    const playbackSound = state.savedSounds[i]
+    console.log(playbackSound.currentTime)
+    const audioElem = playbackSound.audio.cloneNode()
+    audioElem.load();
+    setTimeout(() => {
+        audioElem.play();
+
+        playSavedSounds(state)
+    }, playbackSound.currentTime)
+}

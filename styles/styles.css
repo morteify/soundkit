@@ -6,13 +6,13 @@ body {
 #instruments-section {
   background: #fcfcfc;
   width: 100vw;
-  height: 60vh;
+  height: 85vh;
 }
 
 #timeline-section {
   background: #d3d1d1;
   width: 100vw;
-  height: 40vh;
+  height: 15vh;
 }
 
 .instruments-section__drums__openhihat--active, .instruments-section__drums__closedhihat--active, .instruments-section__drums__ride--active, .instruments-section__drums__cymbal--active, .instruments-section__drums__snare--active, .instruments-section__drums__kick--active, .instruments-section__drums__clap--active, .instruments-section__drums__shaker--active, .instruments-section__drums__openhihat, .instruments-section__drums__closedhihat, .instruments-section__drums__ride, .instruments-section__drums__cymbal, .instruments-section__drums__snare, .instruments-section__drums__kick, .instruments-section__drums__clap, .instruments-section__drums__shaker {
@@ -30,6 +30,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-family: "Montserrat";
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.63);
 }
 
 .instruments-section__drums__openhihat--active:hover, .instruments-section__drums__closedhihat--active:hover, .instruments-section__drums__ride--active:hover, .instruments-section__drums__cymbal--active:hover, .instruments-section__drums__snare--active:hover, .instruments-section__drums__kick--active:hover, .instruments-section__drums__clap--active:hover, .instruments-section__drums__shaker--active:hover, .instruments-section__drums__openhihat:hover, .instruments-section__drums__closedhihat:hover, .instruments-section__drums__ride:hover, .instruments-section__drums__cymbal:hover, .instruments-section__drums__snare:hover, .instruments-section__drums__kick:hover, .instruments-section__drums__clap:hover, .instruments-section__drums__shaker:hover {

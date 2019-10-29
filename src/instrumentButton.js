@@ -1,27 +1,36 @@
-export function instrumentButton(title, sound, key, cssClassName = '', state, updateSavedSounds) {
+export function instrumentButton(obj, state, updateSavedSounds, targetOutput) {
+    const { name, sound, key, color, cssClassName } = obj
     const div = document.createElement('div')
     div.classList.add(cssClassName)
 
-    const titleElem = document.createElement('p')
-    titleElem.innerHTML = title
-    titleElem.classList.add(`${cssClassName}__title`)
-    div.appendChild(titleElem)
+    const nameElem = document.createElement('p')
+    nameElem.innerHTML = name
+    nameElem.classList.add(`${cssClassName}name`)
+    div.appendChild(nameElem)
 
     const keyElem = document.createElement('p')
     keyElem.innerHTML = key
     keyElem.classList.add(`${cssClassName}__key`)
     div.appendChild(keyElem)
 
+
+
     const playSound = (soundSource, updateSavedSounds, ) => {
-        const audioElem = soundSource.cloneNode()
+        const audioElem = new Audio(soundSource.src)
 
         if (state.isRecording) {
+
             const currentAudioInfo = {
                 key,
+                name,
                 audio: soundSource,
-                name: title,
                 currentTime: Date.now() - state.lastInterval
             }
+            targetOutput.innerHTML += "&nbsp".repeat(Math.floor(currentAudioInfo.currentTime / 100))
+            const block = document.createElement('div')
+            block.style = `width: 10px; height: 2em; background: ${color}`
+            targetOutput.appendChild(block)
+
             updateSavedSounds(currentAudioInfo)
         }
         audioElem.pause()
@@ -29,10 +38,6 @@ export function instrumentButton(title, sound, key, cssClassName = '', state, up
         audioElem.load()
         audioElem.play()
         state.lastInterval = Date.now()
-    }
-
-    const toggleActive = () => {
-        div.classList.toggleList(`${cssClassName}--title`)
     }
 
     div.addEventListener('mousedown', event => {
