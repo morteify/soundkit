@@ -14,7 +14,7 @@
 
   &__drums {
     @include displayFlex(row);
-    &__hihat {
+    &__openhihat {
       @extend %default-button;
       background: aqua;
     }
@@ -26,9 +26,25 @@
       @extend %default-button;
       background: yellow;
     }
-    &__kickdrum {
+    &__kick {
       @extend %default-button;
       background: blue;
+    }
+    &__shaker {
+      @extend %default-button;
+      background: grey;
+    }
+    &__closedhihat {
+      @extend %default-button;
+      background: violet;
+    }
+    &__cymbal {
+      @extend %default-button;
+      background: salmon;
+    }
+    &__ride {
+      @extend %default-button;
+      background: mediumpurple;
     }
   }
 }

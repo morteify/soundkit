@@ -1,10 +1,13 @@
 //import { instrumentButton } from "./src/components/instrumentButton.js";
-const Clap = new Audio('../../../assets/Drums/clap.wav')
-const HiHat = new Audio('../../../assets/Drums/hihat.wav')
-const Snare = new Audio('../../../assets/Drums/snare.wav')
-const KickDrum = new Audio('../../../assets/Drums/kick.wav')
-// TODO REMOVE BELOW TEST
-const schafter = new Audio('../../../assets/Drums/schafter.mp3')
+const Clap = new Audio('../../../assets/Drums/clap.WAV')
+const OpenHiHat = new Audio('../../../assets/Drums/openhihat.WAV')
+const ClosedHiHat = new Audio('../../../assets/Drums/closedhihat.WAV')
+const Snare = new Audio('../../../assets/Drums/snare.WAV')
+const Kick = new Audio('../../../assets/Drums/kick.WAV')
+const Shaker = new Audio('../../../assets/Drums/shaker.WAV')
+const Ride = new Audio('../../../assets/Drums/ride.WAV')
+const Cymbal = new Audio('../../../assets/Drums/cymbal.WAV')
+
 
 const instrumentsSection = document.querySelector('#instruments-section')
 const timelineSection = document.querySelector('#timeline-section')
@@ -18,32 +21,50 @@ const drums = [
 
     },
     {
-        name: 'HiHat',
-        sound: HiHat,
+        name: 'OpenHiHat',
+        sound: OpenHiHat,
         key: 'S',
-        cssClassName: 'instruments-section__drums__hihat',
+        cssClassName: 'instruments-section__drums__openhihat',
+
+    },
+    {
+        name: 'ClosedHiHat',
+        sound: ClosedHiHat,
+        key: 'D',
+        cssClassName: 'instruments-section__drums__closedhihat',
 
     },
     {
         name: 'Snare',
         sound: Snare,
-        key: 'D',
+        key: 'F',
         cssClassName: 'instruments-section__drums__snare',
 
     },
     {
-        name: 'KickDrum',
-        sound: KickDrum,
-        key: 'F',
-        cssClassName: 'instruments-section__drums__kickdrum',
-
+        name: 'Kick',
+        sound: Kick,
+        key: 'G',
+        cssClassName: 'instruments-section__drums__kick',
     },
     {
-        name: 'schafter',
-        sound: schafter,
-        key: 'G',
-        cssClassName: 'instruments-section__drums__schafter',
-    }
+        name: 'Shaker',
+        sound: Shaker,
+        key: 'H',
+        cssClassName: 'instruments-section__drums__shaker',
+    },
+    {
+        name: 'Ride',
+        sound: Ride,
+        key: 'J',
+        cssClassName: 'instruments-section__drums__ride',
+    },
+    {
+        name: 'Cymbal',
+        sound: Cymbal,
+        key: 'K',
+        cssClassName: 'instruments-section__drums__cymbal',
+    },
 ]
 
 
@@ -66,13 +87,13 @@ function updateSavedSounds(obj) {
     savedSounds.push(sound)
     console.log(savedSounds)
 }
-
+const startTime = Date.now()
 const drumsButtons = Object.values(drums).map(obj => {
-    return instrumentButton(obj.name, obj.sound, obj.key, obj.cssClassName, updateSavedSounds)
+    return instrumentButton(obj.name, obj.sound, obj.key, obj.cssClassName, updateSavedSounds, startTime)
 })
 
-
-function instrumentButton(title, sound, key, cssClassName = '', updateSavedSounds) {
+let lastTime = 0
+function instrumentButton(title, sound, key, cssClassName = '', updateSavedSounds, startTime) {
     const div = document.createElement('div')
     div.classList.add(cssClassName)
 
@@ -86,24 +107,32 @@ function instrumentButton(title, sound, key, cssClassName = '', updateSavedSound
     keyElem.classList.add(`${cssClassName}__key`)
     div.appendChild(keyElem)
 
-    const playSound = (soundSource, updateSavedSounds) => {
-        const startTime = Date.now()
+    const playSound = (soundSource, updateSavedSounds, startTime) => {
         const audioElem = soundSource.cloneNode()
+
+        updateSavedSounds({ key, audio: soundSource, name: title, currentTime: Date.now() - lastTime })
         audioElem.pause()
         audioElem.currentTime = 0
+        audioElem.load()
         audioElem.play()
-
-        audioElem.addEventListener('ended', () => {
-            updateSavedSounds({ key, audio: audioElem, name: title, currentTime: audioElem.currentTime })
-        })
+        lastTime = Date.now()
 
 
-
+        // document.body.addEventListener('keydown', event => {
+        //     updateSavedSounds({ key, audio: audioElem, name: title, currentTime: audioElem.currentTime })
+        // })
     }
     div.addEventListener('click', event => playSound(sound, updateSavedSounds))
     document.body.addEventListener('keydown', event => {
         if (event.keyCode === key.charCodeAt(0)) {
-            playSound(sound, updateSavedSounds)
+            if (lastTime === 0) {
+                lastTime = startTime
+                console.log('last time === 0', lastTime)
+            }
+            else {
+                console.log('lastTime!=0', lastTime)
+            }
+            playSound(sound, updateSavedSounds, startTime)
         }
     })
 
@@ -122,10 +151,14 @@ instrumentsSection.appendChild(drumsSection)
 
 
 // TIMELINE SECTION
+
 const playButton = document.createElement('button')
 playButton.innerHTML = "PLAY"
-playButton.addEventListener('click', event => playSavedSounds())
+playButton.addEventListener('click', event => {
+    playSavedSounds()
+})
 timelineSection.appendChild(playButton)
+
 
 
 // const playSavedSounds = () => savedSounds.forEach((savedSound, index) => {
@@ -145,13 +178,15 @@ var i = -1;
 function playSavedSounds() {
     i++;
     if (i == savedSounds.length) return;
-    console.log(savedSounds[i])
-    const playbackSound = savedSounds[i].audio.cloneNode()
-    playbackSound.addEventListener('ended', playSavedSounds);
-
+    const playbackSound = savedSounds[i]
+    console.log(playbackSound.currentTime)
+    //playbackSound.audio.addEventListener('ended', playSavedSounds);
+    const audioElem = playbackSound.audio.cloneNode()
+    audioElem.load();
     setTimeout(() => {
-        playbackSound.play();
-    }, 100)
+        audioElem.play();
+        playSavedSounds()
+    }, playbackSound.currentTime)
 }
 
 
