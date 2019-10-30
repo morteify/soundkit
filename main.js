@@ -1,14 +1,15 @@
-import { instrumentButton } from "./src/instrumentButton.js";
-import { drums } from "./src/drums.js"
+import { instrumentButton } from './src/instrumentButton.js';
+import { drums } from './src/drums.js'
+import { guitarLicks } from './src/guitarLicks.js'
 
 
 const instrumentsSection = document.querySelector('#instruments-section')
 const timelineSection = document.querySelector('#timeline-section')
 
 const state = {
-    isRecording: false,
-    lastInterval: 0,
-    savedSounds: []
+	isRecording: false,
+	lastInterval: 0,
+	savedSounds: []
 }
 
 const controlPanel = document.createElement('div')
@@ -16,63 +17,83 @@ controlPanel.classList.add('timeline-section__control-panel')
 timelineSection.appendChild(controlPanel)
 
 const recordIcon = document.createElement('img')
-recordIcon.src = "./assets/Icons/microphone.png"
+recordIcon.src = './assets/Icons/microphone.png'
 recordIcon.classList.add('timeline-section__control-panel__record')
 recordIcon.addEventListener('click', event => {
-    state.isRecording = !state.isRecording
-    if (state.isRecording)
-        recordIcon.classList = 'timeline-section__control-panel__record--active'
-    if (!state.isRecording)
-        recordIcon.classList = 'timeline-section__control-panel__record'
-    state.lastInterval = Date.now()
+	state.isRecording = !state.isRecording
+	if (state.isRecording)
+		recordIcon.classList = 'timeline-section__control-panel__record--active'
+	if (!state.isRecording)
+		recordIcon.classList = 'timeline-section__control-panel__record'
+	state.lastInterval = Date.now()
 })
 controlPanel.appendChild(recordIcon)
 
 const playIcon = document.createElement('img')
-playIcon.src = "./assets/Icons/play-button.png"
+playIcon.src = './assets/Icons/play-button.png'
 playIcon.classList.add('timeline-section__control-panel__play')
 playIcon.addEventListener('click', event => {
-    state.isRecording = false
-    playSavedSounds(state)
+	state.isRecording = false
+	playSavedSounds(state)
 })
 controlPanel.appendChild(playIcon)
 
+const removeSavedTrackIcon = document.createElement('img')
+removeSavedTrackIcon.src = './assets/Icons/delete-photo.png'
+removeSavedTrackIcon.classList.add('timeline-section__control-panel__remove')
+removeSavedTrackIcon.addEventListener('click', event => {
+	state.savedSounds = []
+	savedSoundsSection.innerHTML = ''
+})
+controlPanel.appendChild(removeSavedTrackIcon)
+
+
 const savedSoundsSection = document.createElement('div')
-savedSoundsSection.style = "width: 100%; display: flex"
+savedSoundsSection.style = 'width: 100%; height: 65%; display: flex; justify-content: flex-start; align-items: center;'
 timelineSection.appendChild(savedSoundsSection)
 
 
 function updateSavedSounds(obj) {
-    const sound = {
-        key: obj.key, audio: obj.audio, name: obj.name, currentTime: obj.currentTime,
-    }
-    state.savedSounds = [...state.savedSounds, sound]
-    console.log(state.savedSounds)
+	const sound = {
+		key: obj.key, audio: obj.audio, name: obj.name, currentTime: obj.currentTime,
+	}
+	state.savedSounds = [...state.savedSounds, sound]
+	console.log(state.savedSounds)
 }
 
 const drumsButtons = Object.values(drums).map(obj => {
-    return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
+	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
 })
+
 
 const drumsSection = document.createElement('div')
 drumsSection.classList.add('instruments-section__drums')
 drumsButtons.forEach(drumButton => drumsSection.appendChild(drumButton))
 instrumentsSection.appendChild(drumsSection)
 
+const guitarLicksButtons = Object.values(guitarLicks).map(obj => {
+	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
+})
+
+const guitarLicksSection = document.createElement('div')
+guitarLicksSection.classList.add('instruments-section__guitar-licks')
+guitarLicksButtons.forEach(guitarLick => guitarLicksSection.appendChild(guitarLick))
+instrumentsSection.appendChild(guitarLicksSection)
+
 let i = -1
 export function playSavedSounds() {
-    i++
-    if (i == state.savedSounds.length) {
-        i = -1;
-        return;
-    };
-    const playbackSound = state.savedSounds[i]
-    console.log(playbackSound.currentTime)
-    const audioElem = playbackSound.audio.cloneNode()
-    audioElem.load();
-    setTimeout(() => {
-        audioElem.play();
+	i++
+	if (i == state.savedSounds.length) {
+		i = -1
+		return
+	}
+	const playbackSound = state.savedSounds[i]
+	console.log(playbackSound.currentTime)
+	const audioElem = playbackSound.audio.cloneNode()
+	audioElem.load()
+	setTimeout(() => {
+		audioElem.play()
 
-        playSavedSounds(state)
-    }, playbackSound.currentTime)
+		playSavedSounds(state)
+	}, playbackSound.currentTime)
 }

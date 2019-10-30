@@ -10,12 +10,12 @@ body {
 }
 
 #timeline-section {
-  background: #d3d1d1;
+  background: #d3d1d17a;
   width: 100vw;
   height: 15vh;
 }
 
-.instruments-section__drums__openhihat--active, .instruments-section__drums__closedhihat--active, .instruments-section__drums__ride--active, .instruments-section__drums__cymbal--active, .instruments-section__drums__snare--active, .instruments-section__drums__kick--active, .instruments-section__drums__clap--active, .instruments-section__drums__shaker--active, .instruments-section__drums__openhihat, .instruments-section__drums__closedhihat, .instruments-section__drums__ride, .instruments-section__drums__cymbal, .instruments-section__drums__snare, .instruments-section__drums__kick, .instruments-section__drums__clap, .instruments-section__drums__shaker {
+.instruments-section__drums--active, .instruments-section__drums > *, .instruments-section__guitar-licks > * {
   height: 10vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,14 +32,15 @@ body {
           flex-direction: column;
   font-family: "Montserrat";
   font-weight: 300;
+  border-radius: 8px;
   color: rgba(0, 0, 0, 0.63);
 }
 
-.instruments-section__drums__openhihat--active:hover, .instruments-section__drums__closedhihat--active:hover, .instruments-section__drums__ride--active:hover, .instruments-section__drums__cymbal--active:hover, .instruments-section__drums__snare--active:hover, .instruments-section__drums__kick--active:hover, .instruments-section__drums__clap--active:hover, .instruments-section__drums__shaker--active:hover, .instruments-section__drums__openhihat:hover, .instruments-section__drums__closedhihat:hover, .instruments-section__drums__ride:hover, .instruments-section__drums__cymbal:hover, .instruments-section__drums__snare:hover, .instruments-section__drums__kick:hover, .instruments-section__drums__clap:hover, .instruments-section__drums__shaker:hover {
+.instruments-section__drums--active:hover, .instruments-section__drums > :hover, .instruments-section__guitar-licks > :hover {
   cursor: pointer;
 }
 
-.instruments-section__drums__openhihat--active, .instruments-section__drums__closedhihat--active, .instruments-section__drums__ride--active, .instruments-section__drums__cymbal--active, .instruments-section__drums__snare--active, .instruments-section__drums__kick--active, .instruments-section__drums__clap--active, .instruments-section__drums__shaker--active {
+.instruments-section__drums--active {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition: all 0.1s;
@@ -55,77 +56,30 @@ body {
   padding: 10px;
 }
 
-.instruments-section__drums__openhihat {
-  background: #f7567c6c;
+.instruments-section__drums > * {
+  background: #f7567cab;
 }
 
-.instruments-section__drums__openhihat--active {
-  background: #f7567c6c;
+.instruments-section__guitar-licks {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
 }
 
-.instruments-section__drums__closedhihat {
-  background: #f7567c81;
+.instruments-section__guitar-licks > * {
+  background: #99e1d9ab;
 }
 
-.instruments-section__drums__closedhihat--active {
-  background: #f7567c81;
-}
-
-.instruments-section__drums__ride {
-  background: #f7567ca1;
-}
-
-.instruments-section__drums__ride--active {
-  background: #f7567ca1;
-}
-
-.instruments-section__drums__cymbal {
-  background: #f7567c94;
-}
-
-.instruments-section__drums__cymbal--active {
-  background: #f7567c94;
-}
-
-.instruments-section__drums__snare {
-  background: #f7567ca6;
-}
-
-.instruments-section__drums__snare--active {
-  background: #f7567ca6;
-}
-
-.instruments-section__drums__kick {
-  background: #f7567ca8;
-}
-
-.instruments-section__drums__kick--active {
-  background: #f7567ca8;
-}
-
-.instruments-section__drums__clap {
-  background: #f7567cd5;
-}
-
-.instruments-section__drums__clap--active {
-  background: #f7567cd5;
-}
-
-.instruments-section__drums__shaker {
-  background: #f7567c;
-}
-
-.instruments-section__drums__shaker--active {
-  background: #f7567c;
-}
-
-.timeline-section__control-panel__record, .timeline-section__control-panel__record--active, .timeline-section__control-panel__play {
+.timeline-section__control-panel__record, .timeline-section__control-panel__record--active, .timeline-section__control-panel__play, .timeline-section__control-panel__remove {
   height: 3rem;
   height: 3rem;
   padding-left: 0.5rem;
 }
 
-.timeline-section__control-panel__record:hover, .timeline-section__control-panel__record--active:hover, .timeline-section__control-panel__play:hover {
+.timeline-section__control-panel__record:hover, .timeline-section__control-panel__record--active:hover, .timeline-section__control-panel__play:hover, .timeline-section__control-panel__remove:hover {
   cursor: pointer;
   -webkit-filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(6%);
           filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(6%);
