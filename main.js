@@ -51,7 +51,7 @@ controlPanel.appendChild(removeSavedTrackIcon)
 
 
 const savedSoundsSection = document.createElement('div')
-savedSoundsSection.style = 'width: 100%; height: 75%; display: flex; justify-content: flex-start; align-items: center;'
+savedSoundsSection.classList.add('timeline-section__saved-sounds')
 timelineSection.appendChild(savedSoundsSection)
 
 

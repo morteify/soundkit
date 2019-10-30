@@ -25,7 +25,8 @@ export function instrumentButton(obj, state, updateSavedSounds, targetOutput) {
 			}
 			targetOutput.innerHTML += '&nbsp'.repeat(Math.floor(currentAudioInfo.currentTime / 100))
 			const visualBlock = document.createElement('div')
-			visualBlock.style = `border-radius: 8px; width: 0.8rem; height: 8rem; background: ${color}`
+			visualBlock.classList.add('timeline-section__saved-sounds__visual-block')
+			visualBlock.style = `background: ${color}`
 			targetOutput.appendChild(visualBlock)
 
 			updateSavedSounds(currentAudioInfo)
