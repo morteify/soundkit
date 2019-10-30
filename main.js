@@ -1,7 +1,7 @@
-import { instrumentButton } from './src/instrumentButton.js';
+import { instrumentButton } from './src/instrumentButton.js'
 import { drums } from './src/drums.js'
 import { guitarLicks } from './src/guitarLicks.js'
-
+import { acousticGuitar } from './src/acousticGuitar.js'
 
 const instrumentsSection = document.querySelector('#instruments-section')
 const timelineSection = document.querySelector('#timeline-section')
@@ -71,7 +71,25 @@ const drumsButtons = Object.values(drums).map(obj => {
 const drumsSection = document.createElement('div')
 drumsSection.classList.add('instruments-section__drums')
 drumsButtons.forEach(drumButton => drumsSection.appendChild(drumButton))
+const drumIcon = document.createElement('img')
+drumIcon.src = './assets/Icons/drum.png'
+drumIcon.classList.add('instruments-section__drums__icon')
+drumsSection.appendChild(drumIcon)
 instrumentsSection.appendChild(drumsSection)
+
+
+const acousticGuitarButtons = Object.values(acousticGuitar).map(obj => {
+	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
+})
+
+const acousticGuitarSection = document.createElement('div')
+acousticGuitarSection.classList.add('instruments-section__acoustic-guitar')
+acousticGuitarButtons.forEach(acousticSound => acousticGuitarSection.appendChild(acousticSound))
+const acousticGuitarIcon = document.createElement('img')
+acousticGuitarIcon.src = './assets/Icons/guitar.png'
+acousticGuitarSection.appendChild(acousticGuitarIcon)
+acousticGuitarIcon.classList.add('instruments-section__acoustic-guitar__icon')
+instrumentsSection.appendChild(acousticGuitarSection)
 
 const guitarLicksButtons = Object.values(guitarLicks).map(obj => {
 	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
@@ -80,6 +98,10 @@ const guitarLicksButtons = Object.values(guitarLicks).map(obj => {
 const guitarLicksSection = document.createElement('div')
 guitarLicksSection.classList.add('instruments-section__guitar-licks')
 guitarLicksButtons.forEach(guitarLick => guitarLicksSection.appendChild(guitarLick))
+const electricGuitarIcon = document.createElement('img')
+electricGuitarIcon.src = './assets/Icons/electric-guitar.png'
+electricGuitarIcon.classList.add('instruments-section__guitar-licks__icon')
+guitarLicksSection.appendChild(electricGuitarIcon)
 instrumentsSection.appendChild(guitarLicksSection)
 
 let i = -1

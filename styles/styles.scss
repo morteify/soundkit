@@ -30,6 +30,9 @@ header {
   background: #fcfcfc;
   width: 100vw;
   height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #timeline-section {
@@ -60,6 +63,10 @@ header {
   transition: all 0.1s;
 }
 
+%default-instrument-icon {
+  background: #fff !important;
+}
+
 .instruments-section {
   &__drums {
     display: grid;
@@ -69,20 +76,39 @@ header {
     &--active {
       @extend %active-button;
     }
+    &__icon {
+      @extend %default-instrument-icon;
+    }
   }
   &__drums > * {
     @extend %default-button;
     background: #f7567cab;
   }
-  &__guitar-licks {
+  &__acoustic-guitar {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-gap: 10px;
     padding: 10px 2rem;
+    &__icon {
+      @extend %default-instrument-icon;
+    }
+  }
+  &__acoustic-guitar > * {
+    @extend %default-button;
+    background: #99e1d9ab;
+  }
+  &__guitar-licks {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px;
+    padding: 0 2rem;
+    &__icon {
+      @extend %default-instrument-icon;
+    }
   }
   &__guitar-licks > * {
     @extend %default-button;
-    background: #99e1d9ab;
+    background: #5d576b6b;
   }
 }
 

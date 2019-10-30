@@ -33,6 +33,16 @@ header p {
   background: #fcfcfc;
   width: 100vw;
   height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #timeline-section {
@@ -41,7 +51,7 @@ header p {
   height: 30vh;
 }
 
-.instruments-section__drums--active, .instruments-section__drums > *, .instruments-section__guitar-licks > * {
+.instruments-section__drums--active, .instruments-section__drums > *, .instruments-section__acoustic-guitar > *, .instruments-section__guitar-licks > * {
   height: 10vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -63,7 +73,7 @@ header p {
   color: rgba(0, 0, 0, 0.63);
 }
 
-.instruments-section__drums--active:hover, .instruments-section__drums > :hover, .instruments-section__guitar-licks > :hover {
+.instruments-section__drums--active:hover, .instruments-section__drums > :hover, .instruments-section__acoustic-guitar > :hover, .instruments-section__guitar-licks > :hover {
   cursor: pointer;
 }
 
@@ -72,6 +82,10 @@ header p {
           transform: scale(1.1);
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
+}
+
+.instruments-section__drums__icon, .instruments-section__acoustic-guitar__icon, .instruments-section__guitar-licks__icon {
+  background: #fff !important;
 }
 
 .instruments-section__drums {
@@ -87,7 +101,7 @@ header p {
   background: #f7567cab;
 }
 
-.instruments-section__guitar-licks {
+.instruments-section__acoustic-guitar {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[8];
@@ -96,8 +110,21 @@ header p {
   padding: 10px 2rem;
 }
 
-.instruments-section__guitar-licks > * {
+.instruments-section__acoustic-guitar > * {
   background: #99e1d9ab;
+}
+
+.instruments-section__guitar-licks {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+  grid-gap: 10px;
+  padding: 0 2rem;
+}
+
+.instruments-section__guitar-licks > * {
+  background: #5d576b6b;
 }
 
 .timeline-section__control-panel__record, .timeline-section__control-panel__record--active, .timeline-section__control-panel__play, .timeline-section__control-panel__remove {
