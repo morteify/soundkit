@@ -1,18 +1,44 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Montserrat";
+}
+
+header {
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 2em;
+}
+
+header h1 {
+  font-weight: 300;
+  padding-right: 1rem;
+}
+
+header p {
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.521);
+  padding-top: 0.75rem;
 }
 
 #instruments-section {
   background: #fcfcfc;
   width: 100vw;
-  height: 85vh;
+  height: 60vh;
 }
 
 #timeline-section {
   background: #d3d1d17a;
   width: 100vw;
-  height: 15vh;
+  height: 30vh;
 }
 
 .instruments-section__drums--active, .instruments-section__drums > *, .instruments-section__guitar-licks > * {
@@ -31,6 +57,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: "Montserrat";
+  font-size: 1.15rem;
   font-weight: 300;
   border-radius: 8px;
   color: rgba(0, 0, 0, 0.63);
@@ -53,7 +80,7 @@ body {
   -ms-grid-columns: (1fr)[8];
       grid-template-columns: repeat(8, 1fr);
   grid-gap: 10px;
-  padding: 10px;
+  padding: 0 2rem;
 }
 
 .instruments-section__drums > * {
@@ -66,7 +93,7 @@ body {
   -ms-grid-columns: (1fr)[8];
       grid-template-columns: repeat(8, 1fr);
   grid-gap: 10px;
-  padding: 10px;
+  padding: 10px 2rem;
 }
 
 .instruments-section__guitar-licks > * {
@@ -74,8 +101,8 @@ body {
 }
 
 .timeline-section__control-panel__record, .timeline-section__control-panel__record--active, .timeline-section__control-panel__play, .timeline-section__control-panel__remove {
-  height: 3rem;
-  height: 3rem;
+  height: 2.5rem;
+  height: 2.5rem;
   padding-left: 0.5rem;
 }
 
@@ -88,18 +115,19 @@ body {
 .timeline-section__control-panel {
   -webkit-box-shadow: 10px 0px 5px rgba(0, 0, 0, 0.068);
           box-shadow: 10px 0px 5px rgba(0, 0, 0, 0.068);
-  height: 70px;
+  height: 25%;
   background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0 1rem;
 }
 
 .timeline-section__control-panel__record--active {

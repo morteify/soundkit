@@ -27,7 +27,6 @@ recordIcon.addEventListener('click', event => {
 		recordIcon.classList = 'timeline-section__control-panel__record'
 	state.lastInterval = Date.now()
 })
-controlPanel.appendChild(recordIcon)
 
 const playIcon = document.createElement('img')
 playIcon.src = './assets/Icons/play-button.png'
@@ -36,7 +35,10 @@ playIcon.addEventListener('click', event => {
 	state.isRecording = false
 	playSavedSounds(state)
 })
-controlPanel.appendChild(playIcon)
+const recordAndPlayIcons = document.createElement('div')
+recordAndPlayIcons.appendChild(recordIcon)
+recordAndPlayIcons.appendChild(playIcon)
+controlPanel.appendChild(recordAndPlayIcons)
 
 const removeSavedTrackIcon = document.createElement('img')
 removeSavedTrackIcon.src = './assets/Icons/delete-photo.png'
@@ -49,7 +51,7 @@ controlPanel.appendChild(removeSavedTrackIcon)
 
 
 const savedSoundsSection = document.createElement('div')
-savedSoundsSection.style = 'width: 100%; height: 65%; display: flex; justify-content: flex-start; align-items: center;'
+savedSoundsSection.style = 'width: 100%; height: 75%; display: flex; justify-content: flex-start; align-items: center;'
 timelineSection.appendChild(savedSoundsSection)
 
 

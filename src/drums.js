@@ -50,17 +50,17 @@ export const drums = [
 		cssClassName: 'instruments-section__drums__kick',
 		color: '#f7567c'
 	},
-	{
-		name: 'Clap',
-		sound: Clap,
-		key: 'J',
-		cssClassName: 'instruments-section__drums__clap',
-		color: '#f7567c'
-	},
+	// {
+	// 	name: 'Clap',
+	// 	sound: Clap,
+	// 	key: 'J',
+	// 	cssClassName: 'instruments-section__drums__clap',
+	// 	color: '#f7567c'
+	// },
 	{
 		name: 'Shaker',
 		sound: Shaker,
-		key: 'K',
+		key: 'J',
 		cssClassName: 'instruments-section__drums__shaker',
 		color: '#f7567c'
 	},
