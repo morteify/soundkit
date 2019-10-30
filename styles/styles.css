@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat";
+  background: #fcfcfc;
 }
 
 header {
@@ -30,7 +31,6 @@ header p {
 }
 
 #instruments-section {
-  background: #fcfcfc;
   width: 100vw;
   height: 60vh;
   display: -webkit-box;
@@ -52,7 +52,7 @@ header p {
 }
 
 .instruments-section__drums--active, .instruments-section__drums > *, .instruments-section__acoustic-guitar > *, .instruments-section__guitar-licks > * {
-  height: 10vw;
+  height: 9vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,9 +68,9 @@ header p {
           flex-direction: column;
   font-family: "Montserrat";
   font-size: 1.15rem;
-  font-weight: 300;
   border-radius: 8px;
   color: rgba(0, 0, 0, 0.63);
+  color: rgba(255, 248, 248, 0.918);
 }
 
 .instruments-section__drums--active:hover, .instruments-section__drums > :hover, .instruments-section__acoustic-guitar > :hover, .instruments-section__guitar-licks > :hover {
@@ -97,8 +97,36 @@ header p {
   padding: 0 2rem;
 }
 
-.instruments-section__drums > * {
-  background: #f7567cab;
+.instruments-section__drums > *:nth-child(0) {
+  background: rgba(247, 86, 124, 0.4);
+}
+
+.instruments-section__drums > *:nth-child(1) {
+  background: rgba(247, 86, 124, 0.5);
+}
+
+.instruments-section__drums > *:nth-child(2) {
+  background: rgba(247, 86, 124, 0.6);
+}
+
+.instruments-section__drums > *:nth-child(3) {
+  background: rgba(247, 86, 124, 0.7);
+}
+
+.instruments-section__drums > *:nth-child(4) {
+  background: rgba(247, 86, 124, 0.8);
+}
+
+.instruments-section__drums > *:nth-child(5) {
+  background: rgba(247, 86, 124, 0.9);
+}
+
+.instruments-section__drums > *:nth-child(6) {
+  background: #f7567c;
+}
+
+.instruments-section__drums > *:nth-child(7) {
+  background: #f7567c;
 }
 
 .instruments-section__acoustic-guitar {
@@ -110,8 +138,36 @@ header p {
   padding: 10px 2rem;
 }
 
-.instruments-section__acoustic-guitar > * {
-  background: #99e1d9ab;
+.instruments-section__acoustic-guitar > *:nth-child(0) {
+  background: rgba(98, 214, 201, 0.4);
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(1) {
+  background: rgba(98, 214, 201, 0.5);
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(2) {
+  background: rgba(98, 214, 201, 0.6);
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(3) {
+  background: rgba(98, 214, 201, 0.7);
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(4) {
+  background: rgba(98, 214, 201, 0.8);
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(5) {
+  background: rgba(98, 214, 201, 0.9);
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(6) {
+  background: #62d6c9;
+}
+
+.instruments-section__acoustic-guitar > *:nth-child(7) {
+  background: #62d6c9;
 }
 
 .instruments-section__guitar-licks {
@@ -123,8 +179,36 @@ header p {
   padding: 0 2rem;
 }
 
-.instruments-section__guitar-licks > * {
-  background: #5d576b6b;
+.instruments-section__guitar-licks > *:nth-child(0) {
+  background: rgba(93, 87, 107, 0.4);
+}
+
+.instruments-section__guitar-licks > *:nth-child(1) {
+  background: rgba(93, 87, 107, 0.5);
+}
+
+.instruments-section__guitar-licks > *:nth-child(2) {
+  background: rgba(93, 87, 107, 0.6);
+}
+
+.instruments-section__guitar-licks > *:nth-child(3) {
+  background: rgba(93, 87, 107, 0.7);
+}
+
+.instruments-section__guitar-licks > *:nth-child(4) {
+  background: rgba(93, 87, 107, 0.8);
+}
+
+.instruments-section__guitar-licks > *:nth-child(5) {
+  background: rgba(93, 87, 107, 0.9);
+}
+
+.instruments-section__guitar-licks > *:nth-child(6) {
+  background: #5d576b;
+}
+
+.instruments-section__guitar-licks > *:nth-child(7) {
+  background: #5d576b;
 }
 
 .timeline-section__control-panel__record, .timeline-section__control-panel__record--active, .timeline-section__control-panel__play, .timeline-section__control-panel__remove {
@@ -147,7 +231,10 @@ header p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;

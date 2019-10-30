@@ -7,61 +7,63 @@ const Shaker = new Audio('../../../assets/Drums/shaker.WAV')
 const Ride = new Audio('../../../assets/Drums/ride.WAV')
 const Cymbal = new Audio('../../../assets/Drums/cymbal.WAV')
 
+const color = '#f7567c'
+
 export const drums = [
 	{
 		name: 'Open HiHat',
 		sound: OpenHiHat,
 		key: 'Q',
 		cssClassName: 'instruments-section__drums__openhihat',
-		color: '#f7567c'
+		color
 	},
 	{
 		name: 'Closed HiHat',
 		sound: ClosedHiHat,
 		key: 'W',
 		cssClassName: 'instruments-section__drums__closedhihat',
-		color: '#f7567c'
+		color
 	},
 	{
 		name: 'Ride',
 		sound: Ride,
 		key: 'E',
 		cssClassName: 'instruments-section__drums__ride',
-		color: '#f7567c'
+		color
 	},
 	{
 		name: 'Cymbal',
 		sound: Cymbal,
 		key: 'R',
 		cssClassName: 'instruments-section__drums__cymbal',
-		color: '#f7567c'
+		color
 	},
 	{
 		name: 'Snare',
 		sound: Snare,
 		key: 'T',
 		cssClassName: 'instruments-section__drums__snare',
-		color: '#f7567c'
+		color
 	},
 	{
 		name: 'Kick',
 		sound: Kick,
 		key: 'Y',
 		cssClassName: 'instruments-section__drums__kick',
-		color: '#f7567c'
+		color
 	},
 	// {
 	// 	name: 'Clap',
 	// 	sound: Clap,
 	// 	key: 'J',
 	// 	cssClassName: 'instruments-section__drums__clap',
-	// 	color: '#f7567c'
+	// 	color
 	// },
 	{
 		name: 'Shaker',
 		sound: Shaker,
 		key: 'U',
 		cssClassName: 'instruments-section__drums__shaker',
-		color: '#f7567c'
+		color
 	},
 ]
