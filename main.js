@@ -60,7 +60,6 @@ function updateSavedSounds(obj) {
 		key: obj.key, audio: obj.audio, name: obj.name, currentTime: obj.currentTime,
 	}
 	state.savedSounds = [...state.savedSounds, sound]
-	console.log(state.savedSounds)
 }
 
 const drumsButtons = Object.values(drums).map(obj => {
@@ -112,7 +111,6 @@ export function playSavedSounds() {
 		return
 	}
 	const playbackSound = state.savedSounds[i]
-	console.log(playbackSound.currentTime)
 	const audioElem = playbackSound.audio.cloneNode()
 	audioElem.load()
 	setTimeout(() => {
