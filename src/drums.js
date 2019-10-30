@@ -1,10 +1,10 @@
-const OpenHiHat = new Audio('/assets/Drums/openhihat.WAV')
-const ClosedHiHat = new Audio('/assets/Drums/closedhihat.WAV')
-const Snare = new Audio('/assets/Drums/snare.WAV')
-const Kick = new Audio('/assets/Drums/kick.WAV')
-const Shaker = new Audio('/assets/Drums/shaker.WAV')
-const Ride = new Audio('/assets/Drums/ride.WAV')
-const Cymbal = new Audio('/assets/Drums/cymbal.WAV')
+const OpenHiHat = new Audio('/soundkit/soundkit/assets/Drums/openhihat.WAV')
+const ClosedHiHat = new Audio('/soundkit/assets/Drums/closedhihat.WAV')
+const Snare = new Audio('/soundkit/assets/Drums/snare.WAV')
+const Kick = new Audio('/soundkit/assets/Drums/kick.WAV')
+const Shaker = new Audio('/soundkit/assets/Drums/shaker.WAV')
+const Ride = new Audio('/soundkit/assets/Drums/ride.WAV')
+const Cymbal = new Audio('/soundkit/assets/Drums/cymbal.WAV')
 
 const color = '#f7567c'
 

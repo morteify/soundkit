@@ -1,10 +1,10 @@
-const A2A3 = new Audio('/assets/AcousticGuitar/A2A3.wav')
-const A3 = new Audio('/assets/AcousticGuitar/A3.wav')
-const B2 = new Audio('/assets/AcousticGuitar/B2.wav')
-const B3 = new Audio('/assets/AcousticGuitar/B3.wav')
-const B3B4 = new Audio('/assets/AcousticGuitar/B3B4.wav')
-const B4 = new Audio('/assets/AcousticGuitar/B4.wav')
-const Csharp3 = new Audio('/assets/AcousticGuitar/Csharp3.wav')
+const A2A3 = new Audio('/soundkit/assets/AcousticGuitar/A2A3.wav')
+const A3 = new Audio('/soundkit/assets/AcousticGuitar/A3.wav')
+const B2 = new Audio('/soundkit/assets/AcousticGuitar/B2.wav')
+const B3 = new Audio('/soundkit/assets/AcousticGuitar/B3.wav')
+const B3B4 = new Audio('/soundkit/assets/AcousticGuitar/B3B4.wav')
+const B4 = new Audio('/soundkit/assets/AcousticGuitar/B4.wav')
+const Csharp3 = new Audio('/soundkit/assets/AcousticGuitar/Csharp3.wav')
 
 const color = '#62d6c9'
 
