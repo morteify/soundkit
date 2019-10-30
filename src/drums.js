@@ -1,4 +1,4 @@
-const OpenHiHat = new Audio('/soundkit/soundkit/assets/Drums/openhihat.WAV')
+const OpenHiHat = new Audio('/soundkit/assets/Drums/openhihat.WAV')
 const ClosedHiHat = new Audio('/soundkit/assets/Drums/closedhihat.WAV')
 const Snare = new Audio('/soundkit/assets/Drums/snare.WAV')
 const Kick = new Audio('/soundkit/assets/Drums/kick.WAV')
