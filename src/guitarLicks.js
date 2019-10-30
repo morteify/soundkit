@@ -1,11 +1,10 @@
-const Lick1 = new Audio('../assets/GuitarLicks/Lick1.wav')
-const Lick2 = new Audio('../assets/GuitarLicks/Lick2.wav')
-const Lick3 = new Audio('../assets/GuitarLicks/Lick3.wav')
-const Lick4 = new Audio('../assets/GuitarLicks/Lick4.wav')
-const Lick5 = new Audio('../assets/GuitarLicks/Lick5.wav')
-const Lick6 = new Audio('../assets/GuitarLicks/Lick6.wav')
-const Lick7 = new Audio('../assets/GuitarLicks/Lick10.wav')
-const Lick8 = new Audio('../assets/GuitarLicks/Lick9.wav')
+const Lick1 = new Audio('/assets/GuitarLicks/Lick1.wav')
+const Lick2 = new Audio('/assets/GuitarLicks/Lick2.wav')
+const Lick3 = new Audio('/assets/GuitarLicks/Lick3.wav')
+const Lick4 = new Audio('/assets/GuitarLicks/Lick4.wav')
+const Lick5 = new Audio('/assets/GuitarLicks/Lick5.wav')
+const Lick7 = new Audio('/assets/GuitarLicks/Lick10.wav')
+const Lick8 = new Audio('/assets/GuitarLicks/Lick9.wav')
 
 const color = '#5d576b'
 
