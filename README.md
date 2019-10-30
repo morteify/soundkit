@@ -7,5 +7,5 @@ Basic functionality involes:
  * Recording sequence of multiple sounds
  * Playing the playback of previously recorded sequence
 
-Live preview avilable via Github Pages:
+Live preview available via Github Pages:
 https://michal-weglarz.github.io/soundkit/
