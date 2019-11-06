@@ -135,7 +135,7 @@ header p {
   -ms-grid-columns: (1fr)[8];
       grid-template-columns: repeat(8, 1fr);
   grid-gap: 10px;
-  padding: 10px 2rem;
+  padding: 10px 2rem 0rem 2rem;
 }
 
 .instruments-section__acoustic-guitar > *:nth-child(0) {

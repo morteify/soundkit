@@ -1,7 +1,9 @@
-import { instrumentButton } from './src/instrumentButton.js'
 import { drums } from './src/drums.js'
 import { guitarLicks } from './src/guitarLicks.js'
 import { acousticGuitar } from './src/acousticGuitar.js'
+import { createSection } from './src/createSection.js'
+import { createIcon } from './src/createIcon.js'
+import { createButtons } from './src/createButtons.js'
 
 const instrumentsSection = document.querySelector('#instruments-section')
 const timelineSection = document.querySelector('#timeline-section')
@@ -12,26 +14,24 @@ const state = {
 	savedSounds: []
 }
 
+// CONTROL PANEL
 const controlPanel = document.createElement('div')
 controlPanel.classList.add('timeline-section__control-panel')
 timelineSection.appendChild(controlPanel)
 
-const recordIcon = document.createElement('img')
-recordIcon.src = './assets/Icons/microphone.png'
-recordIcon.classList.add('timeline-section__control-panel__record')
-recordIcon.addEventListener('click', event => {
+const recordIconCssName = 'timeline-section__control-panel__record'
+const recordIcon = createIcon('./assets/Icons/microphone.png', recordIconCssName)
+recordIcon.addEventListener('click', () => {
 	state.isRecording = !state.isRecording
 	if (state.isRecording)
-		recordIcon.classList = 'timeline-section__control-panel__record--active'
+		recordIcon.classList = `${recordIconCssName}--active`
 	if (!state.isRecording)
-		recordIcon.classList = 'timeline-section__control-panel__record'
+		recordIcon.classList = recordIconCssName
 	state.lastInterval = Date.now()
 })
 
-const playIcon = document.createElement('img')
-playIcon.src = './assets/Icons/play-button.png'
-playIcon.classList.add('timeline-section__control-panel__play')
-playIcon.addEventListener('click', event => {
+const playIcon = createIcon('./assets/Icons/play-button.png', 'timeline-section__control-panel__play')
+playIcon.addEventListener('click', () => {
 	state.isRecording = false
 	playSavedSounds(state)
 })
@@ -40,20 +40,17 @@ recordAndPlayIcons.appendChild(recordIcon)
 recordAndPlayIcons.appendChild(playIcon)
 controlPanel.appendChild(recordAndPlayIcons)
 
-const removeSavedTrackIcon = document.createElement('img')
-removeSavedTrackIcon.src = './assets/Icons/delete-photo.png'
-removeSavedTrackIcon.classList.add('timeline-section__control-panel__remove')
-removeSavedTrackIcon.addEventListener('click', event => {
+const removeSavedTrackIcon = createIcon('./assets/Icons/delete-photo.png', 'timeline-section__control-panel__remove')
+removeSavedTrackIcon.addEventListener('click', () => {
 	state.savedSounds = []
 	savedSoundsSection.innerHTML = ''
 })
 controlPanel.appendChild(removeSavedTrackIcon)
 
-
+// SAVE SOUNDS
 const savedSoundsSection = document.createElement('div')
 savedSoundsSection.classList.add('timeline-section__saved-sounds')
 timelineSection.appendChild(savedSoundsSection)
-
 
 function updateSavedSounds(obj) {
 	const sound = {
@@ -62,47 +59,25 @@ function updateSavedSounds(obj) {
 	state.savedSounds = [...state.savedSounds, sound]
 }
 
-const drumsButtons = Object.values(drums).map(obj => {
-	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
-})
-
-
-const drumsSection = document.createElement('div')
-drumsSection.classList.add('instruments-section__drums')
-drumsButtons.forEach(drumButton => drumsSection.appendChild(drumButton))
-const drumIcon = document.createElement('img')
-drumIcon.src = './assets/Icons/drum.png'
-drumIcon.classList.add('instruments-section__drums__icon')
-drumsSection.appendChild(drumIcon)
+// DRUMS SECTION
+const drumsButtons = createButtons(drums, state, updateSavedSounds, savedSoundsSection)
+const drumsIcon = createIcon('./assets/Icons/drum.png', 'instruments-section__drums')
+const drumsSection = createSection('drums', drumsButtons, drumsIcon)
 instrumentsSection.appendChild(drumsSection)
 
-
-const acousticGuitarButtons = Object.values(acousticGuitar).map(obj => {
-	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
-})
-
-const acousticGuitarSection = document.createElement('div')
-acousticGuitarSection.classList.add('instruments-section__acoustic-guitar')
-acousticGuitarButtons.forEach(acousticSound => acousticGuitarSection.appendChild(acousticSound))
-const acousticGuitarIcon = document.createElement('img')
-acousticGuitarIcon.src = './assets/Icons/guitar.png'
-acousticGuitarSection.appendChild(acousticGuitarIcon)
-acousticGuitarIcon.classList.add('instruments-section__acoustic-guitar__icon')
+// ACOUSTIC GUITAR SECTION
+const acousticGuitarButtons = createButtons(acousticGuitar, state, updateSavedSounds, savedSoundsSection)
+const acousticGuitarIcon = createIcon('./assets/Icons/guitar.png', 'instruments-section__acoustic-guitar')
+const acousticGuitarSection = createSection('acoustic-guitar', acousticGuitarButtons, acousticGuitarIcon)
 instrumentsSection.appendChild(acousticGuitarSection)
 
-const guitarLicksButtons = Object.values(guitarLicks).map(obj => {
-	return instrumentButton(obj, state, updateSavedSounds, savedSoundsSection)
-})
-
-const guitarLicksSection = document.createElement('div')
-guitarLicksSection.classList.add('instruments-section__guitar-licks')
-guitarLicksButtons.forEach(guitarLick => guitarLicksSection.appendChild(guitarLick))
-const electricGuitarIcon = document.createElement('img')
-electricGuitarIcon.src = './assets/Icons/electric-guitar.png'
-electricGuitarIcon.classList.add('instruments-section__guitar-licks__icon')
-guitarLicksSection.appendChild(electricGuitarIcon)
+// GUITAR LICKS SECTION
+const guitarLicksButtons = createButtons(guitarLicks, state, updateSavedSounds, savedSoundsSection)
+const guitarLicksIcon = createIcon('./assets/Icons/electric-guitar.png', 'instruments-section__guitar-licks')
+const guitarLicksSection = createSection('guitar-licks', guitarLicksButtons, guitarLicksIcon)
 instrumentsSection.appendChild(guitarLicksSection)
 
+// PLAY SAVED SOUNDS
 let i = -1
 export function playSavedSounds() {
 	i++
@@ -115,7 +90,10 @@ export function playSavedSounds() {
 	audioElem.load()
 	setTimeout(() => {
 		audioElem.play()
-
 		playSavedSounds(state)
 	}, playbackSound.currentTime)
 }
+
+
+
+

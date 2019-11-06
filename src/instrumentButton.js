@@ -1,5 +1,6 @@
 export function instrumentButton(obj, state, updateSavedSounds, targetOutput) {
 	const { name, sound, key, color, cssClassName } = obj
+	
 	const div = document.createElement('div')
 	div.classList.add(cssClassName)
 
@@ -38,12 +39,12 @@ export function instrumentButton(obj, state, updateSavedSounds, targetOutput) {
 		state.lastInterval = Date.now()
 	}
 
-	div.addEventListener('mousedown', event => {
+	div.addEventListener('mousedown', () => {
 		div.className = 'instruments-section__drums--active'
 		playSound(sound, updateSavedSounds)
 	})
 
-	div.addEventListener('mouseup', event => {
+	div.addEventListener('mouseup', () => {
 		div.className = `${cssClassName}`
 	})
 
