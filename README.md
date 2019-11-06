@@ -8,4 +8,4 @@ Basic functionality involves:
  * Playing the playback of previously recorded sequence
 
 Live preview available via Github Pages:
-https://michal-weglarz.github.io/soundkit/
+https://soundkit.mweglarz.com/
