@@ -7,5 +7,3 @@ Basic functionality involves:
  * Recording sequence of multiple sounds
  * Playing the playback of previously recorded sequence
 
-Live preview available via Github Pages:
-https://soundkit.mweglarz.com/
